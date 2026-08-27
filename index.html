@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>William Chen — Product Manager, AI &amp; Platform Strategy</title>
+<meta name="description" content="Product manager working on B2B platforms, developer tooling, and applied AI. Six working prototypes, built personally.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EBEEF2;
+  --card:#FFFFFF;
+  --ink:#0D1216;
+  --ink-2:#2A333D;
+  --dim:#464F5A;
+  --faint:#5A6470;
+  --rule:#C8D0D9;
+  --rule-soft:#D8DEE5;
+  --signal:#1B45C4;
+  --signal-soft:#E6EBFA;
+  --amber:#8A5507;
+  --amber-soft:#FBF2E2;
+
+  --rail:198px;
+  --measure:660px;
+  --navh:54px;
+
+  --f-display:'Archivo',system-ui,sans-serif;
+  --f-body:'Source Serif 4',Georgia,serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--navh) + 20px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--signal);color:#fff}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--signal);z-index:60;transition:width .1s linear}
+
+.topnav{position:sticky;top:0;z-index:50;height:var(--navh);background:rgba(235,238,242,.93);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule)}
+.topnav-in{max-width:calc(var(--rail) + var(--measure) + 120px);margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;gap:20px}
+.topnav-name{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.015em;white-space:nowrap;background:none;border:none;padding:0;color:inherit;cursor:pointer}
+.topnav-links{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;flex:1}
+.topnav-links::-webkit-scrollbar{display:none}
+.topnav-links button{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--faint);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:3px;white-space:nowrap;transition:color .15s,background .15s}
+.topnav-links button:hover{color:var(--ink);background:rgba(13,18,22,.05)}
+.topnav-links button.active{color:var(--signal);background:var(--signal-soft)}
+.topnav-cta{font-family:var(--f-mono);font-size:11.5px;font-weight:500;color:#fff;background:var(--signal);border:none;cursor:pointer;padding:7px 13px;border-radius:3px;white-space:nowrap;transition:opacity .15s}
+.topnav-cta:hover{opacity:.85}
+
+.wrap{max-width:calc(var(--rail) + var(--measure) + 120px);margin:0 auto;padding:0 32px}
+.row{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:56px;align-items:start}
+
+.rail{position:sticky;top:calc(var(--navh) + 34px);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:6px}
+.rail-mark{display:block;color:var(--ink);font-weight:700;margin-bottom:6px}
+.rail-note{display:block;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.55;color:var(--dim);border-top:1px solid var(--rule);margin-top:12px;padding-top:11px;max-width:170px;font-family:var(--f-body)}
+
+section{padding:76px 0;border-top:1px solid var(--rule)}
+.body-col{max-width:var(--measure)}
+h2{font-family:var(--f-display);font-weight:700;font-size:32px;line-height:1.16;letter-spacing:-.022em;margin-bottom:20px}
+h3{font-family:var(--f-display);font-weight:600;font-size:17.5px;letter-spacing:-.008em;margin-bottom:6px}
+p{margin-bottom:18px;color:var(--ink-2)}
+p:last-child{margin-bottom:0}
+strong,b{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+
+.hero{padding:78px 0 76px;border-top:none}
+.hero-name{font-family:var(--f-display);font-weight:800;font-size:clamp(46px,7.2vw,74px);line-height:.95;letter-spacing:-.042em;margin-bottom:18px}
+.hero-role{font-family:var(--f-mono);font-size:12.5px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--signal);margin-bottom:26px}
+.hero-thesis{font-size:22px;line-height:1.5;color:var(--ink);max-width:600px;margin-bottom:24px}
+.hero-sub{font-size:17px;color:var(--dim);max-width:580px;margin-bottom:28px}
+.hero-jump{display:flex;flex-wrap:wrap;gap:9px}
+.jump{font-family:var(--f-mono);font-size:12px;font-weight:500;color:var(--ink-2);background:var(--card);border:1px solid var(--rule);cursor:pointer;padding:8px 14px;border-radius:3px;transition:border-color .15s,color .15s,transform .15s}
+.jump:hover{border-color:var(--signal);color:var(--signal);transform:translateY(-1px)}
+.jump.primary{background:var(--signal);border-color:var(--signal);color:#fff}
+.jump.primary:hover{color:#fff;opacity:.88}
+
+.readout{background:var(--card);border:1px solid var(--rule);border-radius:3px;font-family:var(--f-mono);font-size:13.5px;margin:26px 0 22px;overflow:hidden}
+.readout-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 18px;border-bottom:1px solid var(--rule);background:#F2F5F8;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:500}
+.readout-row{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:11px 18px;border-bottom:1px solid var(--rule-soft)}
+.readout-row:last-of-type{border-bottom:none}
+.readout-label{color:var(--dim);font-size:13px}
+.readout-val{color:var(--ink);font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.arrow{color:var(--faint);padding:0 7px}
+.up{color:var(--signal);font-weight:700}
+.readout-foot{padding:11px 18px;border-top:1px solid var(--rule);background:#F2F5F8;font-size:12px;color:var(--dim);line-height:1.55;font-family:var(--f-body)}
+
+.list-tools{display:flex;justify-content:flex-end;margin-bottom:6px}
+.toggle-all{font-family:var(--f-mono);font-size:11.5px;font-weight:500;color:var(--signal);background:none;border:none;cursor:pointer;padding:5px 8px;border-radius:3px}
+.toggle-all:hover{background:var(--signal-soft)}
+.disc{border-top:1px solid var(--rule-soft)}
+.disc-item{border-bottom:1px solid var(--rule-soft)}
+.disc-btn{width:100%;display:grid;grid-template-columns:126px minmax(0,1fr) 22px;gap:22px;align-items:baseline;text-align:left;background:none;border:none;cursor:pointer;padding:18px 0;font-family:inherit;color:inherit}
+.disc-btn:hover .disc-lede{color:var(--ink)}
+.disc-key{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:500;padding-top:4px}
+.disc-lede{font-size:16.5px;color:var(--ink-2);line-height:1.5;transition:color .15s}
+.disc-chev{font-family:var(--f-mono);font-size:15px;color:var(--faint);transition:transform .22s ease;justify-self:end;padding-top:2px}
+.disc-item.open .disc-chev{transform:rotate(90deg);color:var(--signal)}
+.disc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s cubic-bezier(.3,.8,.35,1)}
+.disc-item.open .disc-panel{grid-template-rows:1fr}
+.disc-inner{overflow:hidden}
+.disc-body{padding:0 22px 20px 148px}
+.disc-body p{font-size:16.5px;margin-bottom:14px}
+.disc-body p:last-child{margin-bottom:0}
+
+.callout{border-left:3px solid var(--amber);background:var(--amber-soft);padding:17px 21px;margin:26px 0;border-radius:0 3px 3px 0}
+.callout p{font-size:16.5px;margin-bottom:0;color:var(--ink-2)}
+
+.track{margin:30px 0 24px;border-top:1px solid var(--rule-soft)}
+.track-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:24px;padding:14px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
+.track-yr{font-family:var(--f-mono);font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
+.track-what{font-size:16px;color:var(--ink-2);line-height:1.5}
+
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:24px 0 18px}
+.filt{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.03em;background:none;border:1px solid var(--rule);color:var(--dim);padding:6px 13px;border-radius:20px;cursor:pointer;transition:all .15s}
+.filt:hover{border-color:var(--signal);color:var(--signal)}
+.filt.on{background:var(--signal);border-color:var(--signal);color:#fff}
+.work{display:grid;gap:14px}
+.card{display:block;background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:21px 23px;text-decoration:none;transition:border-color .16s,transform .16s,box-shadow .16s}
+.card:hover{border-color:var(--signal);transform:translateY(-1px);box-shadow:0 4px 14px rgba(13,18,22,.07)}
+.card.hide{display:none}
+.card-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:7px}
+.card-tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);white-space:nowrap;font-weight:500}
+.card p{font-size:16px;color:var(--dim);margin-bottom:0;line-height:1.55}
+.card-link{font-family:var(--f-mono);font-size:12px;color:var(--signal);margin-top:12px;display:inline-block;font-weight:500}
+
+.seek{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:24px;margin-bottom:8px}
+.seek-box{background:var(--card);border:1px solid var(--rule);border-radius:3px;padding:17px 19px}
+.seek-h{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:9px}
+.seek-box p{font-size:15.5px;margin-bottom:0;line-height:1.5}
+
+.contact-list{display:flex;flex-wrap:wrap;gap:11px 28px;margin-top:22px;font-family:var(--f-mono);font-size:14px}
+.contact-list a{color:var(--signal);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:1px;transition:border-color .15s}
+.contact-list a:hover{border-bottom-color:var(--signal)}
+footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.04em;color:var(--faint);text-transform:uppercase}
+
+#totop{position:fixed;right:24px;bottom:24px;z-index:45;width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--rule);color:var(--ink);font-family:var(--f-mono);font-size:14px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s,border-color .15s;box-shadow:0 2px 10px rgba(13,18,22,.09)}
+#totop.show{opacity:1;pointer-events:auto}
+#totop:hover{border-color:var(--signal);color:var(--signal)}
+
+.rise{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.22,.8,.3,1),transform .55s cubic-bezier(.22,.8,.3,1)}
+.rise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise{opacity:1;transform:none;transition:none}
+  .card,.jump,.disc-chev,.disc-panel{transition:none}
+}
+
+@media (max-width:900px){
+  body{font-size:17px}
+  .wrap,.topnav-in{padding:0 20px}
+  .row{grid-template-columns:1fr;gap:14px}
+  .rail{position:static;padding-top:0;margin-bottom:2px}
+  .rail-note{display:none}
+  section{padding:54px 0}
+  .hero{padding:52px 0 54px}
+  h2{font-size:27px}
+  .hero-thesis{font-size:20px}
+  .topnav-name{display:none}
+  .disc-btn{grid-template-columns:minmax(0,1fr) 22px;gap:14px}
+  .disc-key{grid-column:1/-1;padding-top:0;margin-bottom:5px}
+  .disc-body{padding:0 0 18px 0}
+  .track-row{grid-template-columns:1fr;gap:3px;padding:12px 0}
+  .readout-row{grid-template-columns:1fr;gap:3px}
+  #totop{right:16px;bottom:16px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav class="topnav">
+  <div class="topnav-in">
+    <button type="button" class="topnav-name" data-go="top">William Chen</button>
+    <div class="topnav-links">
+      <button type="button" data-go="platform">Platform</button>
+      <button type="button" data-go="delivery">Delivery</button>
+      <button type="button" data-go="practice">Practice</button>
+      <button type="button" data-go="scope">Scope</button>
+      <button type="button" data-go="tools">Tools</button>
+      <button type="button" data-go="team">Team</button>
+      <button type="button" data-go="learning">Learning</button>
+      <button type="button" data-go="range">Range</button>
+      <button type="button" data-go="work">Work</button>
+    </div>
+    <button type="button" class="topnav-cta" data-go="contact">Contact</button>
+  </div>
+</nav>
+
+<div class="wrap" id="top">
+
+  <header class="hero row">
+    <div class="rail">
+      <span class="rail-mark">§00 · Index</span>
+      <span class="rail-note">Six working prototypes. Each links to a live build, not a screenshot.</span>
+    </div>
+    <div class="body-col">
+      <h1 class="hero-name">William<br>Chen</h1>
+      <div class="hero-role">Manager, Product Management — AI &amp; Platform Strategy</div>
+      <p class="hero-thesis">I build platforms that consolidate messy things into one place, and I build the tools my team uses to get there faster.</p>
+      <p class="hero-sub">Eight years in software and SaaS delivery, the last three in product, on top of an earlier run in enterprise platforms and IT governance. Currently leading a unified management platform and AI product strategy at a network security company, where I took a four-portal consolidation from a blank page to seventeen thousand partners.</p>
+      <div class="hero-jump">
+        <button type="button" class="jump primary" data-go="work">See the work</button>
+        <button type="button" class="jump" data-go="platform">Platform results</button>
+        <button type="button" class="jump" data-go="practice">How I work</button>
+        <button type="button" class="jump" data-go="contact">Get in touch</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="row rise" id="platform">
+    <div class="rail">
+      <span class="rail-mark">§01 · Platform</span>
+      <span class="rail-note">Zero to one, measured against the thing it replaced.</span>
+    </div>
+    <div class="body-col">
+      <h2>Four portals, one platform</h2>
+      <p>Firewalls, wireless, endpoints, and licensing each had their own console, their own login, and their own idea of what an account was. Partners managing dozens of tenants moved between all four daily. I ran the discovery, defined the user journeys, made the identity and access calls with engineering, and wrote the requirements that took it to production.</p>
+
+      <div class="readout">
+        <div class="readout-head"><span>Unified platform vs. legacy baseline</span><span>4 quarters</span></div>
+        <div class="readout-row"><span class="readout-label">Active users</span><span class="readout-val">baseline<span class="arrow">→</span><span class="up">9×</span></span></div>
+        <div class="readout-row"><span class="readout-label">Accounts</span><span class="readout-val">baseline<span class="arrow">→</span><span class="up">10×</span></span></div>
+        <div class="readout-row"><span class="readout-label">Adoption score</span><span class="readout-val">5.9<span class="arrow">→</span><span class="up">50.4</span></span></div>
+        <div class="readout-row"><span class="readout-label">Growth, Q2–Q1</span><span class="readout-val"><span class="up">+318%</span></span></div>
+        <div class="readout-row"><span class="readout-label">Firewall customers reaching product through platform</span><span class="readout-val"><span class="up">70%</span></span></div>
+        <div class="readout-row"><span class="readout-label">MSP partners · managing 10+ tenants</span><span class="readout-val">17,000+<span class="arrow">·</span>390+</span></div>
+        <div class="readout-foot">Legacy portal traffic stayed flat across the same period. That comparison is what made the deprecation case, not the growth number on its own.</div>
+      </div>
+
+      <p>Partway through, the release cadence became the constraint, which turned into a piece of work in its own right and is covered in the next section. Promotion from product owner to manager came <strong>about eighteen months in</strong>, which I read as a signal the work landed rather than as a line on a resume.</p>
+
+      <p>Building the replacement is the visible half. The other half is retiring what it replaced, which means a migration path for every partner still on the old portal, a decommissioning sequence that does not strand anyone mid-workflow, and the discipline to actually finish rather than run both indefinitely. <strong>Consolidation only pays off when the thing being consolidated goes away.</strong></p>
+
+      <p><strong>This was not the first blank page.</strong> Earlier, on the delivery side, I stood up the <strong>operational foundation for two new business units from nothing</strong>: a new property insurance carrier and a dedicated contact center built to sell through a major retail partner. That meant network architecture, access management, telephony and call routing, and integrations into the policy, billing, and claims systems, delivered against a market-entry date that was not moving. Different layer of the stack, same problem shape as the platform: nothing exists, several groups need it to work differently, and <strong>the sequencing decides whether it lands</strong>.</p>
+
+      <p>There is also a role that came with the platform rather than the title. Peer product managers scope decisions to their own product area, which is reasonable and also how journeys break at the seams. I became the <strong>cross-product point of reference for the end-to-end experience</strong>, reviewing feature designs from other PMs and catching inconsistencies that only show up when you follow a partner across four products in one session. None of that comes with authority over their roadmaps, so it runs entirely on <strong>being the person who has actually walked the whole path</strong>.</p>
+    </div>
+  </section>
+
+  <section class="row rise" id="delivery">
+    <div class="rail">
+      <span class="rail-mark">§02 · Delivery</span>
+      <span class="rail-note">Three organizations, three transformations, same problem.</span>
+    </div>
+    <div class="body-col">
+      <h2>Shipping faster is a system problem</h2>
+      <p>A roadmap is only worth what the organization can actually deliver against it. I have walked into three companies now where the constraint was not the product decisions but the machinery around them, and in each one <strong>changing how the org shipped mattered more than anything I could have added to the backlog</strong>.</p>
+
+      <div class="readout">
+        <div class="readout-head"><span>Delivery changes led</span><span>Three organizations</span></div>
+        <div class="readout-row"><span class="readout-label">Release cadence, current platform</span><span class="readout-val">quarterly &amp; ad hoc<span class="arrow">→</span><span class="up">monthly</span></span></div>
+        <div class="readout-row"><span class="readout-label">Engineering squads on a shared release train</span><span class="readout-val"><span class="up">3+</span><span class="arrow">·</span>4 product lines</span></div>
+        <div class="readout-row"><span class="readout-label">Administrative overhead, after workflow automation</span><span class="readout-val"><span class="up">−30%</span></span></div>
+        <div class="readout-row"><span class="readout-label">Prior org, delivery model</span><span class="readout-val">waterfall<span class="arrow">→</span><span class="up">agile</span></span></div>
+        <div class="readout-row"><span class="readout-label">Concurrent scrum teams coordinated</span><span class="readout-val"><span class="up">14</span></span></div>
+        <div class="readout-foot">Each of these was a change to how an organization worked rather than a change to a product, which is why they took longer to land and outlasted anything I shipped in the same period.</div>
+      </div>
+
+      <p>At the platform, the cadence was the thing standing between finished work and customers who could use it. Quarterly and ad hoc releases meant a feature completed in week two waited until the quarter closed, and the MVP was going to slip on that alone. I put a SAFe framework in place, aligned the engineering squads onto a shared release train, and <strong>moved four product lines to a monthly cadence</strong>. Alongside it I built the company-wide process for backlog management, requirements intake, and sprint planning, then automated enough of the Jira workflow to <strong>take about thirty percent out of the administrative overhead</strong> the teams were carrying.</p>
+
+      <p>Before that, at a SaaS company still running waterfall, I led the move to agile across the whole organization: cycle times came down, velocity became something you could forecast against, and I rolled out the tooling and the QA automation framework underneath it so the change had somewhere to live after the enthusiasm wore off. Earlier still, I ran quarterly planning and scrum of scrums across <strong>fourteen concurrent teams</strong> against a portfolio budget north of ten million, which is where I learned that dependency management is most of the job and that predictability beats heroics every time.</p>
+
+      <p>What connects them is not a methodology preference. It is that <strong>the gap between "done" and "in a customer's hands" is where most value quietly dies</strong>, and closing it is usually a process problem rather than an engineering one. None of this work is glamorous and it never shows up as a feature, but it is the difference between an org that ships what it decided to build and one that keeps explaining why it did not.</p>
+    </div>
+  </section>
+
+  <section class="row rise" id="practice">
+    <div class="rail">
+      <span class="rail-mark">§03 · Practice</span>
+      <span class="rail-note">How the work gets done, in the order it happens. Click any step to open it.</span>
+    </div>
+    <div class="body-col">
+      <h2>The craft underneath it</h2>
+      <p>Most of what determines whether a release lands happens before engineering opens a ticket. These are the parts I do myself rather than delegate.</p>
+
+      <div class="list-tools"><button class="toggle-all" data-target="practice-list">Expand all</button></div>
+      <div class="disc" id="practice-list">
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Signal</span><span class="disc-lede">I do not push for change without something to point at.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>There has to be a <strong>leading indicator</strong> worth acting on and a <strong>lagging outcome I can measure</strong> afterward, so engineering time goes to work that can prove it moved the top or bottom line. Without both ends, it is an opinion with a roadmap slot.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Triangulation</span><span class="disc-lede">No single source is trustworthy on its own.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>Product analytics tell you what happened but not why. Support tickets over-represent the people who complain. Partner calls give you depth on a sample of one. I pull from all of them and look for where they disagree, because <strong>the disagreement is usually where the real problem is</strong>.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Prioritization</span><span class="disc-lede">Signals compete, and most of the decision is what not to build.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>When a partner escalates, the complaint is a data point rather than a verdict. I look at who is asking, what tier they sit in, how many other partners have hit the same thing, and whether the trend is moving or flat. One loud partner and forty quiet ones with the same problem are different situations, and so are one loud partner and forty who do not care.</p>
+            <p>Everything goes through <strong>MoSCoW</strong>, and the backlog stays <strong>stack-ranked in Jira</strong> against it rather than being re-sorted when someone asks. The ranking is a cost-benefit call in both directions: what it does for top-line growth or bottom-line cost, weighed against <strong>engineering capacity and the hosting and maintenance cost</strong> the thing carries once it exists. Features that look cheap to build and expensive to run are the ones that quietly lose, and that is easier to see when run cost is in the analysis from the start.</p>
+            <p>The comparison that settled the platform investment was two adoption scores side by side, 50.4 against 5.9 for the surface it replaced. One number earns continued investment and the other earns a deprecation plan.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Requirements</span><span class="disc-lede">Numbered acceptance criteria, explicit data models, no logic buried in nested bullets.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>I write <strong>ACs to be testable, so QA can read them as test cases</strong> and engineering cannot reasonably interpret them two ways. Dual format when it needs to travel: a document for executive review, wiki markup for the team building it.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Pressure test</span><span class="disc-lede">Four independent reviewer personas read the requirement before engineering does.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>Before anything reaches engineering, I run requirements through a review pipeline I built that puts <strong>four independent reviewer personas</strong> on the same document and returns an <strong>adjudicated verdict</strong> with severity. They review <strong>in isolation</strong> so they cannot converge on each other's blind spots.</p>
+            <p>It catches unquantified competitive claims and unmeasured success metrics that a single reviewer, including me, reliably misses. A second human reviewer is a favor; this is a system.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Hypothesis</span><span class="disc-lede">Written down before it gets built, then tested against partners rather than internal opinion.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>Every meaningful decision starts as a written hypothesis: what we believe, what we would expect to see if it were true, and what would tell us we were wrong. Then I build interactive prototypes of the competing designs, put the variants in front of real MSPs, watch them work through the flow live, and follow with a survey for the things observation misses.</p>
+            <p>This is <strong>comparative testing, not statistical experimentation</strong>, and I would rather say that plainly than dress it up. The sample is too small for significance and I do not claim it. What it does reliably is <strong>kill an idea in a week</strong> that would otherwise have taken a quarter of engineering time to disprove.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Controlled release</span><span class="disc-lede">Nothing significant goes to everyone at once.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>I scope a controlled release to a subset chosen to represent <strong>the segments most likely to break it</strong>, usually the largest multi-tenant partners rather than the friendliest ones, and define upfront what would send us back rather than forward. Beta widens only once those hold.</p>
+            <p>The point is that the hypothesis keeps getting tested after launch, when conditions are real. When partners get stuck on something support or sales cannot resolve, <strong>I get on the call myself</strong> rather than let it sit in a queue, because that call is usually where the actual defect in the model shows up.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">After launch</span><span class="disc-lede">I own the success metrics continuously, not just at launch.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>I built the <strong>measurement framework in Pendo</strong> tracking adoption, engagement, retention, and feature-level friction. Those metrics decide what earns further investment and what gets deprecated.</p>
+            <p>Two high-traffic features turned out to carry elevated frustration signals nobody had reported, which became its own UX workstream. <strong>Nobody filed a ticket about either one</strong>, which is the argument for instrumenting friction rather than waiting to hear about it.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Enablement</span><span class="disc-lede">A capability does not get adopted because it shipped.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>It gets adopted because sales and support can explain it. I build the enablement material myself, <strong>in the live interface rather than as a slide deck</strong>, so the first time someone demos it to a partner is not the first time they have used it.</p>
+          </div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="row rise" id="scope">
+    <div class="rail">
+      <span class="rail-mark">§04 · Scope</span>
+      <span class="rail-note">The parts of the surface that are mine to answer for.</span>
+    </div>
+    <div class="body-col">
+      <h2>What I own beyond the roadmap</h2>
+      <p>Four areas that sit outside the usual feature-delivery lane, and that I would want to keep in a next role.</p>
+
+      <div class="list-tools"><button class="toggle-all" data-target="scope-list">Expand all</button></div>
+      <div class="disc" id="scope-list">
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Pricing</span><span class="disc-lede">A four-tier ladder built on a progression, not a feature count.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>I own the packaging and pricing model for the AI product: <strong>a free tier for knowledge and guidance, then visibility into posture, then actionable remediation, then autonomous protection</strong>. The free tier ships with any active product and carries no query limit, because pre-purchase discovery and support deflection are worth more as adoption drivers than as revenue.</p>
+            <p>Every use case is mapped to a tier with a written justification for why the boundary sits where it does, so the ladder can be defended rather than just asserted. Pricing is <strong>per managed device rather than per seat</strong>, which matches how partners actually grow. Query allocation is banded by organization size, overage rates fall as tiers rise so the economics favor upgrading over paying penalties, and pre-purchased packs sit below the overage rate. Each tier was positioned against the equivalent offering from competitors partners were already comparing us to.</p>
+            <p>The mechanics matter as much as the model. Metering has to <strong>key off structured status codes rather than message text</strong>, and a failed query needs a taxonomy of its own, because a system error, a rate limit, a policy block, and a capability fallback each deserve a different billing verdict. Getting that wrong is how customers end up paying for the product not working.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Investment case</span><span class="disc-lede">Architecture decisions defended in financial terms to the people who fund them.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>The AI build had an obvious path: adopt one vendor's stack end to end and accept the pricing. I modelled a hybrid instead, splitting workloads between the vendor platform where its native integration earned the premium and a custom model layer where it did not, and took it through executive review as a <strong>projected cost reduction of roughly a third</strong> against the single-vendor approach.</p>
+            <p>Getting that approved meant owning the whole case rather than the technical argument alone: vendor evaluation, the financial model, the competitive positioning, and the answer to what happens if the projection is wrong. Under private equity ownership <strong>every dollar of run cost avoided lands directly on EBITDA</strong>, and framing it that way is what moved it from an engineering preference to a funded decision.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Compliance</span><span class="disc-lede">In a multi-tenant product, regulatory requirements are architecture rather than a checkbox.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>I write the <strong>GDPR-driven requirements for audit logging, data handling, and access control</strong>, and I own the identity, licensing, and role-based access surface. Who can see which tenant's data, what gets written to an audit trail, and what happens on a deletion request are decisions that get expensive to revisit, so they belong in the requirement rather than in a follow-up ticket.</p>
+            <p>Keeping that consistent is the hard part, because regulatory detail is exactly what a busy reviewer skims. <strong>One of the reviewer personas in my n8n pipeline exists for this</strong>: it reads every requirement against internal documentation and pulls current regulatory guidance from the web, so a missing retention rule or an unaddressed access boundary gets flagged before engineering sees the ticket rather than during a security review three sprints later.</p>
+          </div></div></div>
+        </div>
+
+        <div class="disc-item">
+          <button class="disc-btn"><span class="disc-key">Executive</span><span class="disc-lede">Translating product metrics into the terms leadership actually decides on.</span><span class="disc-chev">›</span></button>
+          <div class="disc-panel"><div class="disc-inner"><div class="disc-body">
+            <p>Cost saved, mean time to resolution, support tickets deflected. I also partner with the chief product officer and engineering leadership on how the platform team should be structured, proposing domain-aligned squads and interface-driven decoupling to remove shared-dependency bottlenecks. That is <strong>proposing rather than owning execution</strong>, and I try to be clear about the distinction.</p>
+            <p>The useful skill is knowing which evidence survives contact with a room that does not care about feature counts.</p>
+          </div></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="row rise" id="tools">
+    <div class="rail">
+      <span class="rail-mark">§05 · Tools</span>
+      <span class="rail-note">Built personally, not directed.</span>
+    </div>
+    <div class="body-col">
+      <h2>I would rather build it than describe it</h2>
+      <p>When a problem sits outside what I know, I go learn it rather than routing around it or waiting to be taught. That habit is why the prototypes on this page exist: handing someone a working artifact starts the conversation at <em>this token is wrong for dense tables</em> instead of <em>what did you have in mind</em>.</p>
+      <p>I built a skills library of structured AI instruction files that standardizes how the product team runs discovery, drafts requirements, and produces competitive analysis, so output quality stops depending on who happened to be asking. I built the multi-agent review pipeline that pressure-tests requirements before engineering picks them up. And I built the front-end prototypes for the developer portal, the assistant interface, and the design system dark mode.</p>
+      <p>On the products themselves, <strong>I lead product direction rather than implementation</strong>. For the production AI assistant, that meant the use case definition, the retrieval and grounding approach, the evaluation method, and the packaging and pricing model. <strong>Engineering built and deployed it.</strong></p>
+      <div class="callout">
+        <p>Worth being direct about the line: <strong>I am not an engineer</strong>, and I do not claim depth in statistical experimentation or SQL. What I do is understand a system well enough to make real architectural calls with the people who build it, and build the working artifact when a description would not be enough.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="row rise" id="team">
+    <div class="rail">
+      <span class="rail-mark">§06 · Team</span>
+      <span class="rail-note">Adoption that traveled past the team it was built for.</span>
+    </div>
+    <div class="body-col">
+      <h2>Bringing people along</h2>
+      <p>Most teams adopt AI individually. One person writes a good prompt, gets a good result, and the knowledge stays with them. The next person starts over and gets something different, which makes AI a personal habit rather than a team capability.</p>
+      <p>The skills library was my answer to that. I built it for my own product team first, then spent the time getting other people to actually use it, which is the harder half. It has since been <strong>adopted across IT, operations, and finance</strong>, and contributors from marketing, competitive intelligence, and design now write skills of their own. That was not the original plan and is the better outcome, because something that earns its place in one team and then travels is worth more than something built for everyone from the start.</p>
+      <p>This is not a new instinct. A decade earlier, running an internal collaboration platform, the thing that actually moved adoption was a program I built to turn fifty power users into peer trainers and advocates. Same shape, different tooling: <strong>the leverage is in the people who teach the next person, not in the artifact itself</strong>.</p>
+      <p>Alongside that I manage a product owner, partner with design and engineering leadership on platform team structure, and run the enablement that gets sales and support fluent in what we shipped. The goal was never to replace judgment. It was to remove the part of the work that does not require judgment, so people spend their time on decisions instead of formatting.</p>
+    </div>
+  </section>
+
+  <section class="row rise" id="learning">
+    <div class="rail">
+      <span class="rail-mark">§07 · Learning</span>
+      <span class="rail-note">How I get up to speed on something I do not know yet.</span>
+    </div>
+    <div class="body-col">
+      <h2>How I actually learn something</h2>
+      <p>Adaptability is easy to claim and hard to evidence, so it is worth saying what it consists of. For me it is two habits, and neither is complicated.</p>
+
+      <p>The first is <strong>going directly to people</strong>. I do not learn a domain from a summary of it, because summaries are already someone else's interpretation and the thing I need is usually what got left out. So I talk to whoever actually touches the product: partners and MSPs running it daily, the end users inside those accounts, support reps who hear the same complaint forty times, sales engineers who know which objection kills a deal, the engineers who know which part is held together with tape, and the vendors on the other side of an integration. When a partner is stuck on something support and sales cannot resolve, I get on the call myself, partly to unblock them and partly because <strong>that call teaches me more in twenty minutes than a quarter of dashboards</strong>.</p>
+
+      <p>What I am building toward is the whole picture rather than a list of complaints: who the personas actually are, what each of them is trying to get done, where the journey breaks between one product and the next, and what the moment looks like when it goes right. Pain points are easy to collect and easy to over-index on. <strong>Knowing what makes someone say the thing finally works</strong> is harder and more useful, because it tells you what to protect while you fix everything else.</p>
+
+      <p>The second habit is <strong>building the thing myself</strong>. When a skill or a domain sits outside what I know, reading about it gets me to the point of being able to nod along, which is not the same as understanding it. So I go and build something small and real in it instead. That is where the prototypes on this page came from, and the review pipeline, and the skills library. <strong>None of them started as portfolio pieces.</strong> They started as me trying to understand retrieval quality, or workflow orchestration, or what a design system actually constrains, well enough to have an opinion worth defending in front of the people who do it for a living.</p>
+
+      <p>The corollary is that <strong>I say when I do not know something</strong>. Guessing in a requirement is not a shortcut, it is deferred rework that someone else pays for later, usually an engineer. It costs very little to say I need to go find out, and I would rather be the person who does that than the one who was confidently wrong in a document three sprints ago.</p>
+    </div>
+  </section>
+
+  <section class="row rise" id="range">
+    <div class="rail">
+      <span class="rail-mark">§08 · Range</span>
+      <span class="rail-note">Four functions, three industries, one throughline.</span>
+    </div>
+    <div class="body-col">
+      <h2>What I would bring to a team</h2>
+      <p>I did not arrive at product through the usual route, and the detour is most of what I am useful for.</p>
+
+      <div class="track">
+        <div class="track-row"><span class="track-yr">2010 – 2011</span><span class="track-what"><b>Two ventures of my own.</b> A restaurant ordering app and a student storage company. Field research, concept-tested prototypes in front of real customers, financial projections.</span></div>
+        <div class="track-row"><span class="track-yr">2011 – 2014</span><span class="track-what"><b>Enterprise platforms and governance.</b> Built and ran internal collaboration platforms for 50+ departments at an asset manager and a life insurer, including the taxonomy, the reporting layer, and the training program behind adoption.</span></div>
+        <div class="track-row"><span class="track-yr">2015 – 2017</span><span class="track-what"><b>Graduate study.</b> MS in project management.</span></div>
+        <div class="track-row"><span class="track-yr">2017 – 2018</span><span class="track-what"><b>IT risk and compliance.</b> SOC reviews across 50+ tier-one vendors, NIST 800-53 gap reporting, audit readiness.</span></div>
+        <div class="track-row"><span class="track-yr">2018 – 2022</span><span class="track-what"><b>Delivery and infrastructure.</b> SSO and MFA for 2,000+ employees, then product owner and scrum master across 14 concurrent teams and a $10M+ portfolio. Two greenfield business units built from nothing, plus a document migration that had to hold audit integrity across five million records.</span></div>
+        <div class="track-row"><span class="track-yr">2022 – 2023</span><span class="track-what"><b>SaaS implementation.</b> Senior PM and product owner across 16+ enterprise accounts, plus a company-wide agile transformation and a QA automation framework.</span></div>
+        <div class="track-row"><span class="track-yr">2023 – 2025</span><span class="track-what"><b>Product owner.</b> Zero-to-one build of the consolidated platform, from concept through production launch.</span></div>
+        <div class="track-row"><span class="track-yr">2025 –</span><span class="track-what"><b>Manager, product management.</b> Platform and AI product strategy.</span></div>
+      </div>
+
+      <p>Three industries, four functions. Insurance, then print and communications SaaS, then network security, and I have been effective in each of them without having arrived knowing the domain. That is the honest version of adaptability: not that any environment suits me, but that I have repeatedly walked into one I did not understand and become useful in it <strong>faster than the org expected</strong>.</p>
+
+      <p><strong>Zero-to-one has come up three times now</strong>, in three different forms: two business units stood up so a company could enter a new channel, and a platform built to replace four portals. None of them were the same kind of problem, and all of them started the same way, with nothing existing and several groups needing it to work differently. That is the part I have gotten good at through repetition rather than through a framework.</p>
+
+      <p>The compliance years are why regulatory requirements read as architecture to me rather than as a checkbox someone else handles. The delivery years are why release cadence and dependency management are instincts rather than things I have to look up. And the current work is why I can hold a real architecture conversation with engineering about retrieval and grounding without pretending to be an engineer. None of those were planned as preparation for product management, and all three turned out to be.</p>
+
+      <p>Looking back, the throughline is older than my product title. The first things I ever built were two ventures I started myself, where the entire method was field research and putting a prototype in front of real customers to see whether the idea survived. A few years later I was running an internal platform where adoption depended on a peer-training program I built to turn power users into advocates, because a platform nobody is taught to use is a platform nobody uses. Both are recognizably the same instincts I run on now, which is the part I did not notice until I laid the years out in a row.</p>
+
+      <p>What I would actually bring on a Tuesday is less dramatic than any of that. I ask what the leading indicator is before I ask for engineering time. When I do not know something I say so and go find out, because the alternative is guessing and having it surface later as rework someone else pays for. I would rather build the thing and understand it myself than write a brief and wait. And I get genuinely invested in whatever I own, which matters more than it sounds, because <strong>I have never needed a product to be exciting on paper to care about making it succeed</strong>.</p>
+    </div>
+  </section>
+
+  <section class="row rise" id="work">
+    <div class="rail">
+      <span class="rail-mark">§09 · Work</span>
+      <span class="rail-note">Republished from professional work with company-specific content removed.</span>
+    </div>
+    <div class="body-col">
+      <h2>Six things I built</h2>
+      <p>Each started as a working artifact for a real product decision. They are live, not screenshots.</p>
+
+      <div class="filters">
+        <button class="filt on" data-f="all">All</button>
+        <button class="filt" data-f="ai">Applied AI</button>
+        <button class="filt" data-f="platform">Platform &amp; API</button>
+        <button class="filt" data-f="design">Design</button>
+        <button class="filt" data-f="gtm">Enablement</button>
+      </div>
+
+      <div class="work">
+        <a class="card" data-cat="platform" href="https://github.com/williamchen-pm/API-Hub" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>Unified Developer API Hub</h3><span class="card-tag">Developer platform</span></div>
+          <p>A developer portal consolidating fragmented API documentation across product lines into one reference, with self-service credentials replacing a support ticket.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+        <a class="card" data-cat="ai" href="https://github.com/williamchen-pm/Multi-Agent-PRD-Review" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>Multi-Agent PRD Review</h3><span class="card-tag">AI orchestration</span></div>
+          <p>Four independent reviewer personas evaluate the same requirement in isolation, then an adjudicator returns a single verdict with severity. Built as a guide so any PM can stand one up without engineering.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+        <a class="card" data-cat="ai design" href="https://github.com/williamchen-pm/Autonomous-SecOps-Assistant" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>Autonomous SecOps Assistant</h3><span class="card-tag">North-star design</span></div>
+          <p>What it should feel like when an autonomous system does real work on your behalf. Built around one principle: a confident wrong action is worse than no action, so the interface exposes its own reasoning.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+        <a class="card" data-cat="gtm ai" href="https://github.com/williamchen-pm/Nova-MVP-Enablement" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>MVP Enablement Walkthrough</h3><span class="card-tag">Sales &amp; support</span></div>
+          <p>Interactive enablement running alongside the live interface, giving sellers language rather than features and scripting the awkward questions about data handling and limits.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+        <a class="card" data-cat="design" href="https://github.com/williamchen-pm/Dark-Mode-Prototype" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>Design System Dark Mode</h3><span class="card-tag">Directional artifact</span></div>
+          <p>A first-pass dark theme built to give designers a concrete starting point. Token-level treatment and component states, held to whether an operator could read a dense alert table at two in the morning.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+        <a class="card" data-cat="ai gtm" href="https://github.com/williamchen-pm/Skills-Library" target="_blank" rel="noopener noreferrer">
+          <div class="card-top"><h3>Claude Skills Library</h3><span class="card-tag">Internal tooling</span></div>
+          <p>Structured AI instruction files standardizing how a product team runs discovery, drafts requirements, and produces competitive analysis. Adopted beyond product into IT, operations, and finance.</p>
+          <span class="card-link">View repository →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="row rise" id="contact">
+    <div class="rail">
+      <span class="rail-mark">§10 · Contact</span>
+      <span class="rail-note">Cary, North Carolina. Open to relocation.</span>
+    </div>
+    <div class="body-col">
+      <h2>What I am looking for</h2>
+      <p>The honest answer is that the problem matters more to me than the industry. <strong>I have changed domain three times and the method did not change with it</strong>: find the signal, write the hypothesis, put something in front of real users, measure whether it moved. That has held whether the user was an insurance underwriter, an enterprise IT admin, or an MSP running forty tenants.</p>
+
+      <div class="seek">
+        <div class="seek-box"><div class="seek-h">Problem shape</div><p>Zero-to-one builds, consolidating fragmented surfaces, applied AI with real evaluation behind it, and anything where trust or compliance is a design constraint rather than an afterthought.</p></div>
+        <div class="seek-box"><div class="seek-h">Where I have been</div><p>Enterprise B2B and security. Multi-tenant platforms, developer tooling and APIs, identity and access, regulated environments.</p></div>
+        <div class="seek-box"><div class="seek-h">What I optimize for</div><p>A problem worth solving, users I can actually get in front of, and a team that ships. Industry is the variable I care least about.</p></div>
+      </div>
+
+      <p>That last one is not a throwaway. Enterprise is where I have been, not a lane I am committed to, and <strong>the domain I do not know yet is usually the one I learn fastest</strong>. I would take a consumer product, a commerce surface, or something in games and entertainment as readily as another platform role, and I would be just as interested in a category I have never touched. The part I care about is being close enough to the people using the thing to know whether it worked.</p>
+
+      <p>I would rather be direct than coy about the gap that comes with that. My background is enterprise and I am not going to pretend otherwise in an interview. What I would argue is that the method transfers, that AI and trust and safety are where my recent work is strongest and where consumer problems are hardest, and that becoming useful in an unfamiliar domain quickly is the thing I have the most practice at.</p>
+
+      <p>On the shape of the role rather than the subject: owning a surface end to end, close enough to engineering to make real decisions with them, with room to build things myself rather than only direct them.</p>
+
+      <div class="contact-list">
+        <a href="mailto:chenwilliam1990@gmail.com">chenwilliam1990@gmail.com</a>
+        <a href="https://linkedin.com/in/williamweiyuchen" target="_blank" rel="noopener noreferrer">linkedin.com/in/williamweiyuchen</a>
+        <a href="https://github.com/williamchen-pm" target="_blank" rel="noopener noreferrer">github.com/williamchen-pm</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="row">
+    <div class="rail"></div>
+    <div class="body-col">© 2026 William Chen</div>
+  </footer>
+
+</div>
+
+<button id="totop" aria-label="Back to top">↑</button>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var rises = document.querySelectorAll('.rise');
+  if(reduce || !('IntersectionObserver' in window)){
+    rises.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin:'0px 0px -6% 0px', threshold:0.05 });
+    rises.forEach(function(el){ io.observe(el); });
+  }
+
+  document.querySelectorAll('.disc-btn').forEach(function(btn){
+    var item = btn.parentElement;
+    btn.setAttribute('aria-expanded','false');
+    btn.addEventListener('click', function(){
+      var open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  document.querySelectorAll('.toggle-all').forEach(function(t){
+    t.addEventListener('click', function(){
+      var list = document.getElementById(t.dataset.target);
+      var items = list.querySelectorAll('.disc-item');
+      var anyClosed = Array.prototype.some.call(items, function(i){ return !i.classList.contains('open'); });
+      items.forEach(function(i){
+        i.classList.toggle('open', anyClosed);
+        i.querySelector('.disc-btn').setAttribute('aria-expanded', anyClosed ? 'true' : 'false');
+      });
+      t.textContent = anyClosed ? 'Collapse all' : 'Expand all';
+    });
+  });
+
+  var cards = document.querySelectorAll('.card');
+  document.querySelectorAll('.filt').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.filt').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      var f = b.dataset.f;
+      cards.forEach(function(c){
+        c.classList.toggle('hide', f !== 'all' && (c.dataset.cat || '').indexOf(f) === -1);
+      });
+    });
+  });
+
+  /* In-page navigation uses buttons, not anchors: a button has no href, so it
+     cannot navigate away even if this script fails or the page is sandboxed. */
+  function goTo(id){
+    var target = (id === 'top') ? null : document.getElementById(id);
+    var y = 0;
+    if(target){
+      var navH = document.querySelector('.topnav').offsetHeight;
+      y = target.getBoundingClientRect().top + window.pageYOffset - navH - 18;
+    }
+    y = Math.max(0, y);
+    try {
+      window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+    } catch (e) {
+      window.scrollTo(0, y);
+    }
+  }
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){ goTo(b.dataset.go); });
+  });
+
+  var secs = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var links = {};
+  document.querySelectorAll('.topnav-links button').forEach(function(b){ links[b.dataset.go] = b; });
+  var prog = document.getElementById('prog');
+  var totop = document.getElementById('totop');
+  var nav = document.querySelector('.topnav');
+
+  function onScroll(){
+    var y = window.scrollY;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    totop.classList.toggle('show', y > 700);
+    var offset = nav.offsetHeight + 40, cur = null;
+    secs.forEach(function(s){ if(s.getBoundingClientRect().top <= offset) cur = s.id; });
+    Object.keys(links).forEach(function(k){ links[k].classList.toggle('active', k === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  totop.addEventListener('click', function(){ goTo('top'); });
+})();
+</script>
+
+</body>
+</html>
