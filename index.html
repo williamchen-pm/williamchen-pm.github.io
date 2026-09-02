@@ -42,7 +42,7 @@
 
   --rail:198px;
   --measure:660px;
-  --navh:54px;
+  --navh:58px;
 
   --f-display:'Archivo',system-ui,sans-serif;
   --f-body:'Source Serif 4',Georgia,serif;
@@ -59,21 +59,21 @@ a{color:inherit}
 
 .topnav{position:sticky;top:0;z-index:50;height:var(--navh);background:rgba(235,238,242,.93);backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule)}
 .topnav-in{max-width:calc(var(--rail) + var(--measure) + 120px);margin:0 auto;padding:0 32px;height:100%;display:flex;align-items:center;gap:20px}
-.topnav-name{font-family:var(--f-display);font-weight:700;font-size:15px;letter-spacing:-.015em;white-space:nowrap;background:none;border:none;padding:0;color:inherit;cursor:pointer}
+.topnav-name{font-family:var(--f-display);font-weight:700;font-size:16.5px;letter-spacing:-.015em;white-space:nowrap;background:none;border:none;padding:0;color:inherit;cursor:pointer}
 .topnav-links{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;flex:1}
 .topnav-links::-webkit-scrollbar{display:none}
-.topnav-links button{font-family:var(--f-mono);font-size:11.5px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--faint);background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:3px;white-space:nowrap;transition:color .15s,background .15s}
+.topnav-links button{font-family:var(--f-mono);font-size:13px;font-weight:500;letter-spacing:.02em;text-transform:uppercase;color:var(--dim);background:none;border:none;cursor:pointer;padding:8px 12px;border-radius:3px;white-space:nowrap;transition:color .15s,background .15s}
 .topnav-links button:hover{color:var(--ink);background:rgba(13,18,22,.05)}
 .topnav-links button.active{color:var(--signal);background:var(--signal-soft)}
-.topnav-cta{font-family:var(--f-mono);font-size:11.5px;font-weight:500;color:#fff;background:var(--signal);border:none;cursor:pointer;padding:7px 13px;border-radius:3px;white-space:nowrap;transition:opacity .15s}
+.topnav-cta{font-family:var(--f-mono);font-size:13px;font-weight:500;color:#fff;background:var(--signal);border:none;cursor:pointer;padding:7px 13px;border-radius:3px;white-space:nowrap;transition:opacity .15s}
 .topnav-cta:hover{opacity:.85}
 
 .wrap{max-width:calc(var(--rail) + var(--measure) + 120px);margin:0 auto;padding:0 32px}
 .row{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);gap:56px;align-items:start}
 
-.rail{position:sticky;top:calc(var(--navh) + 34px);font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:6px}
+.rail{position:sticky;top:calc(var(--navh) + 34px);font-family:var(--f-mono);font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);padding-top:6px}
 .rail-mark{display:block;color:var(--ink);font-weight:700;margin-bottom:6px}
-.rail-note{display:block;text-transform:none;letter-spacing:0;font-size:13px;line-height:1.55;color:var(--dim);border-top:1px solid var(--rule);margin-top:12px;padding-top:11px;max-width:170px;font-family:var(--f-body)}
+.rail-note{display:block;text-transform:none;letter-spacing:0;font-size:14.5px;line-height:1.55;color:var(--dim);border-top:1px solid var(--rule);margin-top:12px;padding-top:11px;max-width:170px;font-family:var(--f-body)}
 
 section{padding:76px 0;border-top:1px solid var(--rule)}
 .body-col{max-width:var(--measure)}
@@ -94,10 +94,10 @@ em{font-style:italic}
 .jump:hover{border-color:var(--signal);color:var(--signal);transform:translateY(-1px)}
 .jump.primary{background:var(--signal);border-color:var(--signal);color:#fff}
 .jump.primary:hover{color:#fff;opacity:.88}
-.hero-contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:13px}
-.hero-contact a{color:var(--dim);text-decoration:none;display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .15s,border-color .15s}
+.hero-contact{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);font-family:var(--f-mono);font-size:15px}
+.hero-contact a{color:var(--ink-2);font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid transparent;padding-bottom:2px;transition:color .15s,border-color .15s}
 .hero-contact a:hover{color:var(--signal);border-bottom-color:var(--signal)}
-.hero-contact svg{width:14px;height:14px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hero-contact svg{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .hc-loc{color:var(--faint);display:inline-flex;align-items:center;gap:7px}
 
 .readout{background:var(--card);border:1px solid var(--rule);border-radius:3px;font-family:var(--f-mono);font-size:13.5px;margin:26px 0 22px;overflow:hidden}
@@ -132,7 +132,7 @@ em{font-style:italic}
 .callout p{font-size:16.5px;margin-bottom:0;color:var(--ink-2)}
 
 .track{margin:30px 0 24px;border-top:1px solid var(--rule-soft)}
-.track-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:24px;padding:14px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
+.track-row{display:grid;grid-template-columns:118px minmax(0,1fr);gap:20px;padding:14px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
 .track-yr{font-family:var(--f-mono);font-size:12px;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:500}
 .track-what{font-size:16px;color:var(--ink-2);line-height:1.5}
 
@@ -163,6 +163,21 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
 #totop.show{opacity:1;pointer-events:auto}
 #totop:hover{border-color:var(--signal);color:var(--signal)}
 
+.accent{color:var(--signal)}
+
+.hero-diagram{margin-top:34px;max-width:100%}
+.hd-svg{width:100%;height:auto;display:block}
+.hd-box{fill:var(--card);stroke:var(--rule);stroke-width:1.3}
+.hd-box.target{stroke:var(--signal);stroke-width:1.6}
+.hd-label{font-family:var(--f-mono);font-size:12px;fill:var(--dim);letter-spacing:.01em}
+.hd-label.target{fill:var(--ink);font-weight:700;font-size:13.5px}
+.hd-line{stroke:var(--rule);stroke-width:1.2;fill:none}
+.hd-line.active{stroke:var(--signal);stroke-width:1.4}
+.hd-tag{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;fill:var(--faint)}
+.hd-metric{font-family:var(--f-mono);font-size:12px;fill:var(--signal);font-weight:700}
+
+.footer-line{font-family:var(--f-body);font-size:14px;color:var(--faint);margin-top:6px;font-style:italic}
+
 .rise{opacity:0;transform:translateY(14px);transition:opacity .55s cubic-bezier(.22,.8,.3,1),transform .55s cubic-bezier(.22,.8,.3,1)}
 .rise.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
@@ -182,6 +197,7 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
   h2{font-size:27px}
   .hero-thesis{font-size:20px}
   .hero-contact{gap:10px 16px;font-size:12.5px}
+  .hero-diagram{margin-top:26px;max-width:100%}
   .topnav-name{display:none}
   .disc-btn{grid-template-columns:minmax(0,1fr) 22px;gap:14px}
   .disc-key{grid-column:1/-1;padding-top:0;margin-bottom:5px}
@@ -224,7 +240,7 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
     <div class="body-col">
       <h1 class="hero-name">William<br>Chen</h1>
       <div class="hero-role">Manager, Product Management — AI &amp; Platform Strategy</div>
-      <p class="hero-thesis">I build platforms that consolidate messy things into one place, and I build the tools my team uses to get there faster.</p>
+      <p class="hero-thesis">I build platforms that consolidate messy things into <span class="accent">one place</span>, and I build the tools my team uses to get there faster.</p>
       <p class="hero-sub">Eight years in software and SaaS delivery, the last three in product, on top of an earlier run in enterprise platforms and IT governance. Currently leading a unified management platform and AI product strategy at a network security company, where I took a four-portal consolidation from a blank page to seventeen thousand partners.</p>
       <div class="hero-jump">
         <button type="button" class="jump primary" data-go="work">See the work</button>
@@ -250,6 +266,43 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
           <svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Cary, NC · open to relocation
         </span>
+      </div>
+
+      <div class="hero-diagram" aria-hidden="true">
+        <svg class="hd-svg" viewBox="0 0 668 168" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="14" class="hd-tag">One build, four portals in</text>
+
+          <path class="hd-line active" d="M228,39 C255,39 245,72 274,86"/>
+          <path class="hd-line active" d="M228,65 C255,65 260,76 274,86"/>
+          <path class="hd-line active" d="M228,107 C255,107 260,96 274,86"/>
+          <path class="hd-line active" d="M228,133 C255,133 245,100 274,86"/>
+
+          <rect class="hd-box" x="4" y="28" width="224" height="22" rx="3"/>
+          <text x="16" y="43" class="hd-label">Firewall console</text>
+          <rect class="hd-box" x="4" y="54" width="224" height="22" rx="3"/>
+          <text x="16" y="69" class="hd-label">Wireless console</text>
+          <rect class="hd-box" x="4" y="96" width="224" height="22" rx="3"/>
+          <text x="16" y="111" class="hd-label">Endpoint console</text>
+          <rect class="hd-box" x="4" y="122" width="224" height="22" rx="3"/>
+          <text x="16" y="137" class="hd-label">Licensing &amp; RBAC console</text>
+
+          <rect class="hd-box target" x="274" y="54" width="236" height="64" rx="4"/>
+          <text x="392" y="71" class="hd-label target" text-anchor="middle" dominant-baseline="central">Unified Management</text>
+          <text x="392" y="88" class="hd-tag" text-anchor="middle" dominant-baseline="central">one login</text>
+          <text x="392" y="100" class="hd-tag" text-anchor="middle" dominant-baseline="central">one identity model</text>
+
+          <path class="hd-line active" d="M510,86 L542,86" marker-end="url(#arrow)"/>
+
+          <text x="554" y="72" class="hd-metric">9× users</text>
+          <text x="554" y="88" class="hd-metric">10× accounts</text>
+          <text x="554" y="104" class="hd-metric">+318% growth</text>
+
+          <defs>
+            <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3.5" orient="auto">
+              <path d="M0,0 L7,3.5 L0,7 Z" fill="var(--signal)"/>
+            </marker>
+          </defs>
+        </svg>
       </div>
     </div>
   </header>
@@ -296,7 +349,7 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
       <div class="readout">
         <div class="readout-head"><span>Delivery changes led</span><span>Three organizations</span></div>
         <div class="readout-row"><span class="readout-label">Release cadence, current platform</span><span class="readout-val">quarterly &amp; ad hoc<span class="arrow">→</span><span class="up">monthly</span></span></div>
-        <div class="readout-row"><span class="readout-label">Engineering squads on a shared release train</span><span class="readout-val"><span class="up">3+</span><span class="arrow">·</span>4 product lines</span></div>
+        <div class="readout-row"><span class="readout-label">Engineering squads on a standardized release train</span><span class="readout-val"><span class="up">6</span> eng teams</span></div>
         <div class="readout-row"><span class="readout-label">Administrative overhead, after workflow automation</span><span class="readout-val"><span class="up">−30%</span></span></div>
         <div class="readout-row"><span class="readout-label">Prior org, delivery model</span><span class="readout-val">waterfall<span class="arrow">→</span><span class="up">agile</span></span></div>
         <div class="readout-row"><span class="readout-label">Concurrent scrum teams coordinated</span><span class="readout-val"><span class="up">14</span></span></div>
@@ -511,7 +564,7 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
         <div class="track-row"><span class="track-yr">2018 – 2022</span><span class="track-what"><b>Delivery and infrastructure.</b> SSO and MFA for 2,000+ employees, then product owner and scrum master across 14 concurrent teams and a $10M+ portfolio. Two greenfield business units built from nothing, plus a document migration that had to hold audit integrity across five million records.</span></div>
         <div class="track-row"><span class="track-yr">2022 – 2023</span><span class="track-what"><b>SaaS implementation.</b> Senior PM and product owner across 16+ enterprise accounts, plus a company-wide agile transformation and a QA automation framework.</span></div>
         <div class="track-row"><span class="track-yr">2023 – 2025</span><span class="track-what"><b>Product owner.</b> Zero-to-one build of the consolidated platform, from concept through production launch.</span></div>
-        <div class="track-row"><span class="track-yr">2025 –</span><span class="track-what"><b>Manager, product management.</b> Platform and AI product strategy.</span></div>
+        <div class="track-row"><span class="track-yr">2025 – Present</span><span class="track-what"><b>Manager, product management.</b> Platform and AI product strategy.</span></div>
       </div>
 
       <p>Three industries, four functions. Insurance, then print and communications SaaS, then network security, and I have been effective in each of them without having arrived knowing the domain. That is the honest version of adaptability: not that any environment suits me, but that I have repeatedly walked into one I did not understand and become useful in it <strong>faster than the org expected</strong>.</p>
@@ -609,7 +662,10 @@ footer{padding:34px 0 60px;border-top:1px solid var(--rule);font-family:var(--f-
 
   <footer class="row">
     <div class="rail"></div>
-    <div class="body-col">© 2026 William Chen</div>
+    <div class="body-col">
+      © 2026 William Chen
+      <div class="footer-line">Still happiest with a whiteboard, a bad first draft, and something real to click on.</div>
+    </div>
   </footer>
 
 </div>
